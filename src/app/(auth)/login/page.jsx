@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const [isShowPassword, setIsShowPassword] = useState(false);
@@ -27,7 +28,8 @@ const LoginPage = () => {
 
     console.log(res, error);
     if (error) {
-      alert(error.message);
+      toast.warning(error.message);
+      return;
     }
     if (res) {
       alert("Login successful..");
@@ -65,7 +67,10 @@ const LoginPage = () => {
               placeholder="Type password here"
               {...register("password", { required: "Password is required" })}
             />
-            <span className="absolute right-2 top-3" onClick={()=>setIsShowPassword(!isShowPassword)}>
+            <span
+              className="absolute right-2 top-3"
+              onClick={() => setIsShowPassword(!isShowPassword)}
+            >
               {isShowPassword ? <FaEye /> : <FaEyeSlash />}
             </span>
             {errors.password && (

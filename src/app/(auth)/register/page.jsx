@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const [isShowPassword, setIsShowPassword] = useState(false);
@@ -29,10 +30,10 @@ const RegisterPage = () => {
 
     console.log(res, error);
     if (error) {
-      alert(error.message);
+      toast.warning(error.message);
     }
     if (res) {
-      alert("Successfully registered...");
+      toast.success("Account Created Successfully");
     }
   };
   // console.log(errors);

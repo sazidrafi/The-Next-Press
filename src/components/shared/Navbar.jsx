@@ -29,11 +29,17 @@ const Navbar = () => {
         </li>
       </ul>
       {isPending ? (
-        <p>Loading...</p>
+        <span className="loading loading-spinner text-error"></span>
       ) : user ? (
         <div className="flex justify-center gap-2 items-center">
           <p>Hi, {user.name}</p>
-          <Image src={user.image} width={40} height={40} alt="user logo"></Image>
+          <Image
+            src={user.image}
+            width={40}
+            height={40}
+            alt="user logo"
+            className="rounded-full"
+          ></Image>
 
           <button
             className="bg-gray-200 py-2 px-5 cursor-pointer"
