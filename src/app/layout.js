@@ -25,7 +25,7 @@ export const montserrat = Montserrat({
 
 export const metadata = {
   title: "The Next Press",
-  description: "Modified by the USER",
+  description: "Best news portal in Bangladesh",
 };
 
 export default function RootLayout({ children }) {

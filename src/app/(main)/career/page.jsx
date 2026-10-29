@@ -1,5 +1,9 @@
 //import React from 'react';
 
+export const metadata = {
+  title: "The Next Press - Career",
+};
+
 const CareerPage = () => {
   return (
     <div>

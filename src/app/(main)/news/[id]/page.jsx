@@ -7,12 +7,26 @@ import { CiBookmark, CiShare2 } from "react-icons/ci";
 import { FaRegEye, FaStar } from "react-icons/fa";
 import { GoArrowLeft } from "react-icons/go";
 
-const NewsDetailsPage = async ({ params }) => {
+export async function generateMetadata({ params }) {
   const { id } = await params;
-  console.log(id, "Params");
+  // console.log(id, "params id");
 
   const news = await getNewsDetailsId(id);
-  console.log(news, "news");
+  return {
+    title: news.title,
+    description: news.details,
+  }
+
+
+  // console.log(news, "News");
+}
+
+const NewsDetailsPage = async ({ params }) => {
+  const { id } = await params;
+  // console.log(id, "Params");
+
+  const news = await getNewsDetailsId(id);
+  // console.log(news, "news");
   return (
     <div className="max-w-5xl mx-auto my-8">
       <div className="card bg-base-100  shadow-sm">
@@ -61,10 +75,12 @@ const NewsDetailsPage = async ({ params }) => {
           <p className="text-lg text-justify"> {news.details}</p>
 
           <div className="flex items-center justify-between gap-2">
-            <button className="btn p-5 text-white text-lg bg-rose-400">
-              <GoArrowLeft className="text-3xl"/>
-              All News in this Category
-            </button>
+            <Link href={`/category/${news.category_id}`}>
+              <button className="btn p-5 text-white text-lg bg-rose-400">
+                <GoArrowLeft className="text-3xl" />
+                All News in this Category
+              </button>
+            </Link>
           </div>
         </div>
       </div>
