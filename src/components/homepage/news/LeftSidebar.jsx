@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const LeftSidebar = ({ news, activeId }) => {
-    console.log(news);
+  // console.log(news);
   return (
     <div>
       <h2 className="font-bold text-lg">All categories</h2>
@@ -10,7 +10,8 @@ const LeftSidebar = ({ news, activeId }) => {
           return (
             <li
               key={category.category_id}
-              className={`${activeId === category.category_id && "bg-slate-100"
+              className={`${
+                activeId === category.category_id && "bg-slate-100"
               } rounded-md font-bold text-center text-md`}
             >
               <Link
