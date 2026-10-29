@@ -1,9 +1,13 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const LoginPage = () => {
+  const [isShowPassword, setIsShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
@@ -11,11 +15,25 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm();
   //handle login function
-  const handleLogin = (data) => {
+  const handleLogin = async (data) => {
     console.log(data);
+
+    const { data: res, error } = await authClient.signIn.email({
+      email: data.email, // required, The email address of the user.
+      password: data.password, // required, The password of the user. It should be at least 8 characters long and max 128 by default.
+      rememberMe: true, // If false, the user will be signed out when the browser is closed. (optional) (default: true)
+      callbackURL: "/", // An optional URL to redirect to after the user signs in. (optional)
+    });
+
+    console.log(res, error);
+    if (error) {
+      alert(error.message);
+    }
+    if (res) {
+      alert("Login successful..");
+    }
   };
   // console.log(errors);
-
 
   //this takes value directly from input field (similar like onChange method)
   // console.log(watch("email"));
@@ -39,14 +57,17 @@ const LoginPage = () => {
               <p className="text-red-500 text-sm">{errors.email.message}</p>
             )}
           </fieldset>
-          <fieldset className="fieldset text-lg">
+          <fieldset className="fieldset text-lg relative">
             <legend className="fieldset-legend">Password</legend>
             <input
-              type="password"
+              type={isShowPassword ? "text" : "password"}
               className="input"
               placeholder="Type password here"
               {...register("password", { required: "Password is required" })}
             />
+            <span className="absolute right-2 top-3" onClick={()=>setIsShowPassword(!isShowPassword)}>
+              {isShowPassword ? <FaEye /> : <FaEyeSlash />}
+            </span>
             {errors.password && (
               <p className="text-red-500 text-sm">{errors.password.message}</p>
             )}
@@ -56,7 +77,7 @@ const LoginPage = () => {
           </button>
         </form>
         <p className="mt-4  text-center">
-          Don't have account ?{" "}
+          Don&apos;t have account ?{" "}
           <Link href={"/register"} className="text-blue-400 font-semibold">
             Register
           </Link>

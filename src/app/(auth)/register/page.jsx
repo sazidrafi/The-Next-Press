@@ -1,9 +1,13 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const RegisterPage = () => {
+  const [isShowPassword, setIsShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
@@ -11,9 +15,25 @@ const RegisterPage = () => {
     formState: { errors },
   } = useForm();
   //handle login function
-  const handleLogin = (data) => {
+  const handleRegister = async (data) => {
     // console.log(data);
     const { email, name, photo, password } = data;
+
+    const { data: res, error } = await authClient.signUp.email({
+      name: name, // required, The name of the user.
+      email: email, // required, The email address of the user.
+      password: password, // required, The password of the user. It should be at least 8 characters long and max 128 by default.
+      image: photo, // An optional profile image of the user.
+      callbackURL: "/", // An optional URL to redirect to after the user signs up.
+    });
+
+    console.log(res, error);
+    if (error) {
+      alert(error.message);
+    }
+    if (res) {
+      alert("Successfully registered...");
+    }
   };
   // console.log(errors);
 
@@ -26,7 +46,7 @@ const RegisterPage = () => {
         <h2 className="font-bold text-3xl text-center mb-6">
           Login your account
         </h2>
-        <form className="space-y-4" onSubmit={handleSubmit(handleLogin)}>
+        <form className="space-y-4" onSubmit={handleSubmit(handleRegister)}>
           <fieldset className="fieldset text-lg">
             <legend className="fieldset-legend">Name</legend>
             <input
@@ -38,7 +58,8 @@ const RegisterPage = () => {
             {errors.name && (
               <p className="text-red-500 text-sm">{errors.name.message}</p>
             )}
-          </fieldset><fieldset className="fieldset text-lg">
+          </fieldset>
+          <fieldset className="fieldset text-lg">
             <legend className="fieldset-legend">Photo URL</legend>
             <input
               {...register("photo", { required: "photo url is required" })}
@@ -50,7 +71,7 @@ const RegisterPage = () => {
               <p className="text-red-500 text-sm">{errors.photo.message}</p>
             )}
           </fieldset>
-          
+
           <fieldset className="fieldset text-lg">
             <legend className="fieldset-legend">Email address</legend>
             <input
@@ -63,14 +84,20 @@ const RegisterPage = () => {
               <p className="text-red-500 text-sm">{errors.email.message}</p>
             )}
           </fieldset>
-          <fieldset className="fieldset text-lg">
+          <fieldset className="fieldset text-lg relative">
             <legend className="fieldset-legend">Password</legend>
             <input
-              type="password"
+              type={isShowPassword ? "text" : "password"}
               className="input"
               placeholder="Type password here"
               {...register("password", { required: "Password is required" })}
             />
+            <span
+              className="absolute right-2 top-3"
+              onClick={() => setIsShowPassword(!isShowPassword)}
+            >
+              {isShowPassword ? <FaEye /> : <FaEyeSlash />}
+            </span>
             {errors.password && (
               <p className="text-red-500 text-sm">{errors.password.message}</p>
             )}
@@ -79,6 +106,12 @@ const RegisterPage = () => {
             Register
           </button>
         </form>
+        <p className="mt-4 text-center">
+          Already have an account?{" "}
+          <Link href="/login" className="text-blue-400 font-semibold">
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   );
