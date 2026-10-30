@@ -19,7 +19,7 @@ Auth for authentication, with MongoDB storing user information.
 
 **Repository:** https://github.com/sazidrafi/The-Next-Press
 
-------------------------------------------------------------------------
+---
 
 ## Screenshots
 
@@ -53,46 +53,46 @@ Here is the short overview of the project through different pages,
 
 ![Career page](public/images/career-page.png)
 
-------------------------------------------------------------------------
+---
 
 ## Features
 
--   **Home page:** A landing page introducing The Next Press.
--   **News exploration:** Browse news fetched from an external news API.
--   **Category-based browsing:** Select a news category from the left
-    sidebar to explore related articles.
--   **News details:** Open an individual news article on its dedicated
-    details page.
--   **User registration and login:** Create an account and sign in using
-    email and password.
--   **Google authentication:** Sign in using a Google account.
--   **GitHub authentication:** Sign in using a GitHub account.
--   **Protected routes:** The Career page and individual News Details
-    pages require authentication.
--   **MongoDB integration:** User information is stored in MongoDB.
--   **Responsive interface:** User interface built with Tailwind CSS and
-    DaisyUI.
+- **Home page:** A landing page introducing The Next Press.
+- **News exploration:** Browse news fetched from an external news API.
+- **Category-based browsing:** Select a news category from the left
+  sidebar to explore related articles.
+- **News details:** Open an individual news article on its dedicated
+  details page.
+- **User registration and login:** Create an account and sign in using
+  email and password.
+- **Google authentication:** Sign in using a Google account.
+- **GitHub authentication:** Sign in using a GitHub account.
+- **Protected routes:** The Career page and individual News Details
+  pages require authentication.
+- **MongoDB integration:** User information is stored in MongoDB.
+- **Responsive interface:** User interface built with Tailwind CSS and
+  DaisyUI.
 
-------------------------------------------------------------------------
+---
 
 ## Technology Stack
 
-  Technology          Purpose
-  ------------------- -----------------------------------------------------
-  Next.js             React framework, routing, and application structure
-  React               Building user interfaces
-  Tailwind CSS        Utility-first styling
-  DaisyUI             UI components and styling
-  Better Auth         Email/password and social authentication
-  MongoDB             Storing user information
-  External News API   Fetching news content
-  Vercel              Deployment and hosting
+| Technology        | Purpose                                             |
+| :---------------- | :-------------------------------------------------- |
+| Next.js           | React framework, routing, and application structure |
+| React             | Building user interfaces                            |
+| Tailwind CSS      | Utility-first styling                               |
+| DaisyUI           | UI components and styling                           |
+| Better Auth       | Email/password and social authentication            |
+| MongoDB           | Storing user information                            |
+| External News API | Fetching news content                               |
+| Vercel            | Deployment and hosting                              |
 
-------------------------------------------------------------------------
+---
 
 ## Project Structure
 
-``` text
+```text
 The-Next-Press/
 ├── public/
 |   ├── images/
@@ -152,10 +152,10 @@ The-Next-Press/
 └── README.md
 ```
 
-*This is an overview based on the project structure. Configuration files
-not shown in the screenshot may also exist in the repository.*
+_This is an overview based on the project structure. Configuration files
+not shown in the screenshot may also exist in the repository._
 
-------------------------------------------------------------------------
+---
 
 ## Authentication and Protected Routes
 
@@ -163,9 +163,9 @@ The Next Press uses **Better Auth** to manage user authentication.
 
 ### Available sign-in methods
 
--   Email and password
--   Google OAuth
--   GitHub OAuth
+- Email and password
+- Google OAuth
+- GitHub OAuth
 
 ### MongoDB
 
@@ -176,20 +176,22 @@ integration.
 
 The application uses Next.js Proxy-based route protection.
 
-  Page                          Access
-  ----------------------------- --------------------------
-  Home                          Public
-  About                         Public
-  News listing and categories   Public
-  Login                         Public
-  Register                      Public
-  Career                        Authenticated users only
-  Individual news details       Authenticated users only
+Page Access
+
+---
+
+Home Public
+About Public
+News listing and categories Public
+Login Public
+Register Public
+Career Authenticated users only
+Individual news details Authenticated users only
 
 When a user who is not signed in tries to access a protected page, they
 are redirected to the login page.
 
-------------------------------------------------------------------------
+---
 
 ## Getting Started
 
@@ -199,28 +201,28 @@ Follow these steps to run the project on your local machine.
 
 Make sure you have the following:
 
--   [Node.js](https://nodejs.org/)
--   npm
--   [Git](https://git-scm.com/)
--   A MongoDB database (for example, MongoDB Atlas)
--   Google OAuth credentials (if you want to use Google sign-in)
--   GitHub OAuth credentials (if you want to use GitHub sign-in)
+- [Node.js](https://nodejs.org/)
+- npm
+- [Git](https://git-scm.com/)
+- A MongoDB database (for example, MongoDB Atlas)
+- Google OAuth credentials (if you want to use Google sign-in)
+- GitHub OAuth credentials (if you want to use GitHub sign-in)
 
 ### 1. Clone the repository
 
-``` bash
+```bash
 git clone https://github.com/sazidrafi/The-Next-Press.git
 ```
 
 ### 2. Open the project directory
 
-``` bash
+```bash
 cd The-Next-Press
 ```
 
 ### 3. Install dependencies
 
-``` bash
+```bash
 npm install
 ```
 
@@ -230,7 +232,7 @@ Create a file named `.env.local` in the root directory of the project.
 
 Add your own credentials:
 
-``` env
+```env
 BETTER_AUTH_SECRET=your_better_auth_secret
 BETTER_AUTH_URL=http://localhost:3000
 
@@ -252,7 +254,7 @@ production URLs in Google, GitHub, and Vercel.
 
 ### 5. Start the development server
 
-``` bash
+```bash
 npm run dev
 ```
 
@@ -260,17 +262,17 @@ Open <http://localhost:3000> in your browser.
 
 ### 6. Create a production build
 
-``` bash
+```bash
 npm run build
 ```
 
 To run the production build locally:
 
-``` bash
+```bash
 npm run start
 ```
 
-------------------------------------------------------------------------
+---
 
 ## Deployment
 
@@ -291,7 +293,7 @@ To deploy your own instance:
 For more information, see the [Vercel
 documentation](https://vercel.com/docs).
 
-------------------------------------------------------------------------
+---
 
 ## Adding Screenshots
 
@@ -305,13 +307,13 @@ To add your own screenshots:
 For example, if your homepage screenshot is saved as
 `public/images/homepage.png`, add:
 
-``` markdown
+```markdown
 ![Homepage](public/images/homepage.png)
 ```
 
 Suggested screenshot filenames:
 
-``` text
+```text
 public/
 └── images/
     ├── homepage.png
@@ -326,24 +328,24 @@ public/
 After adding the images, commit and push them to GitHub so they appear
 in the repository README.
 
-------------------------------------------------------------------------
+---
 
 ## Project Purpose
 
 The Next Press was developed as a practical project to apply modern
 frontend development concepts, including:
 
--   Building a multi-page application with Next.js.
--   Fetching and displaying news from an external API.
--   Organizing news content by category.
--   Implementing email/password and social authentication with Better
-    Auth.
--   Integrating MongoDB for user information storage.
--   Protecting selected routes with Next.js Proxy.
--   Building reusable components and responsive layouts with React,
-    Tailwind CSS, and DaisyUI.
+- Building a multi-page application with Next.js.
+- Fetching and displaying news from an external API.
+- Organizing news content by category.
+- Implementing email/password and social authentication with Better
+  Auth.
+- Integrating MongoDB for user information storage.
+- Protecting selected routes with Next.js Proxy.
+- Building reusable components and responsive layouts with React,
+  Tailwind CSS, and DaisyUI.
 
-------------------------------------------------------------------------
+---
 
 ## Author
 
@@ -351,11 +353,11 @@ frontend development concepts, including:
 
 CSE Graduate \| Frontend Developer
 
--   GitHub: [@sazidrafi](https://github.com/sazidrafi)
--   Project Repository: [The Next
-    Press](https://github.com/sazidrafi/The-Next-Press)
+- GitHub: [@sazidrafi](https://github.com/sazidrafi)
+- Project Repository: [The Next
+  Press](https://github.com/sazidrafi/The-Next-Press)
 
-------------------------------------------------------------------------
+---
 
 ## License
 
@@ -364,6 +366,6 @@ This project was created for educational and portfolio purposes.
 No open-source license has been specified. Unless a license is added to
 the repository, all rights are reserved by the author.
 
-------------------------------------------------------------------------
+---
 
 **Built with ❤️ using Next.js and modern web technologies.**
